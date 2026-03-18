@@ -20,6 +20,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
 <!-- hreflang tags to be added when translations are available -->
+<script>(function(){var t=localStorage.getItem('suite_theme');if(t==='dark'||((!t)&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
@@ -27,7 +28,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
 --bg:#faf9f6;--surface:#f4f2ee;--border:#e8e4dd;
---text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#9e9b96;
+--text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#706d68;
 --accent:#C49A2A;--accent-hover:#A8831F;--accent-text:#ffffff;
 --destructive:#c0392b;
 --shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04);
@@ -35,7 +36,7 @@
 }
 html.dark{
 --bg:#141412;--surface:#1e1c1a;--border:#2e2b27;
---text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#6b6760;
+--text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#8a8680;
 --accent:#D4A835;--accent-hover:#C49A2A;--accent-text:#ffffff;
 --shadow:0 1px 3px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2);
 --strength-weak:#e74c3c;--strength-fair:#f39c12;--strength-strong:#2ecc71;--strength-very-strong:#27ae60;
@@ -308,7 +309,7 @@ select.text-input{cursor:pointer}
   <main class="main-area">
     <div class="generator">
       <!-- Password output -->
-      <div class="password-list" id="passwordList"></div>
+      <div class="password-list" id="passwordList" aria-live="polite" aria-label="Generated passwords"></div>
       <div class="action-bar">
         <button class="btn btn-secondary" id="copyAllBtn">Copy All</button>
         <button class="btn btn-primary" id="regenBtn">
@@ -336,19 +337,19 @@ select.text-input{cursor:pointer}
           </div>
           <div class="setting-row">
             <div><span class="setting-label">Uppercase</span><div class="setting-sub">A-Z</div></div>
-            <button class="toggle on" data-type="upper" aria-label="Toggle uppercase"></button>
+            <button class="toggle on" data-type="upper" role="switch" aria-checked="true" aria-label="Toggle uppercase"></button>
           </div>
           <div class="setting-row">
             <div><span class="setting-label">Lowercase</span><div class="setting-sub">a-z</div></div>
-            <button class="toggle on" data-type="lower" aria-label="Toggle lowercase"></button>
+            <button class="toggle on" data-type="lower" role="switch" aria-checked="true" aria-label="Toggle lowercase"></button>
           </div>
           <div class="setting-row">
             <div><span class="setting-label">Numbers</span><div class="setting-sub">0-9</div></div>
-            <button class="toggle on" data-type="numbers" aria-label="Toggle numbers"></button>
+            <button class="toggle on" data-type="numbers" role="switch" aria-checked="true" aria-label="Toggle numbers"></button>
           </div>
           <div class="setting-row">
             <div><span class="setting-label">Symbols</span><div class="setting-sub">!@#$%...</div></div>
-            <button class="toggle on" data-type="symbols" aria-label="Toggle symbols"></button>
+            <button class="toggle on" data-type="symbols" role="switch" aria-checked="true" aria-label="Toggle symbols"></button>
           </div>
           <div class="setting-row" id="symbolInputRow">
             <span class="setting-label">Custom symbols</span>
@@ -385,11 +386,11 @@ select.text-input{cursor:pointer}
           </div>
           <div class="setting-row">
             <span class="setting-label">Capitalize words</span>
-            <button class="toggle on" id="capitalizeToggle" aria-label="Toggle capitalize"></button>
+            <button class="toggle on" id="capitalizeToggle" role="switch" aria-checked="true" aria-label="Toggle capitalize"></button>
           </div>
           <div class="setting-row">
             <span class="setting-label">Add trailing number</span>
-            <button class="toggle" id="trailingNumToggle" aria-label="Toggle trailing number"></button>
+            <button class="toggle" id="trailingNumToggle" role="switch" aria-checked="false" aria-label="Toggle trailing number"></button>
           </div>
           <div class="setting-row">
             <span class="setting-label">Number of passwords</span>
@@ -406,7 +407,7 @@ select.text-input{cursor:pointer}
   <!-- Right panel -->
   <aside class="right-panel" id="rightPanel">
     <div class="strength-card" id="strengthCard">
-      <div class="strength-bar-bg"><div class="strength-bar-fill" id="strengthBar"></div></div>
+      <div class="strength-bar-bg"><div class="strength-bar-fill" id="strengthBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Password strength"></div></div>
       <div class="strength-label" id="strengthLabel">Strong</div>
       <div class="stats-grid">
         <div class="stat-card"><div class="stat-value" id="statEntropy">--</div><div class="stat-label">Entropy</div></div>
@@ -850,6 +851,7 @@ function updateStrength() {
   // Desktop panel
   $('strengthBar').style.width = st.pct + '%';
   $('strengthBar').style.background = color;
+  $('strengthBar').setAttribute('aria-valuenow', Math.round(st.pct));
   $('strengthLabel').textContent = st.level;
   $('strengthLabel').style.color = color;
   $('statEntropy').textContent = Math.round(st.entropy) + ' bits';
@@ -1062,6 +1064,7 @@ function setupEvents() {
 
       S[key] = newVal;
       t.classList.toggle('on', newVal);
+      t.setAttribute('aria-checked', String(newVal));
       if (type === 'symbols') $('symbolInputRow').style.display = newVal ? '' : 'none';
       saveSettings();
       regenerate();
@@ -1114,12 +1117,14 @@ function setupEvents() {
   $('capitalizeToggle').addEventListener('click', () => {
     S.capitalize = !S.capitalize;
     $('capitalizeToggle').classList.toggle('on', S.capitalize);
+    $('capitalizeToggle').setAttribute('aria-checked', String(S.capitalize));
     saveSettings();
     regenerate();
   });
   $('trailingNumToggle').addEventListener('click', () => {
     S.trailingNumber = !S.trailingNumber;
     $('trailingNumToggle').classList.toggle('on', S.trailingNumber);
+    $('trailingNumToggle').setAttribute('aria-checked', String(S.trailingNumber));
     saveSettings();
     regenerate();
   });
@@ -1209,6 +1214,12 @@ function setupEvents() {
         copyText(S.passwords[0]);
         showToast('Copied!');
       }
+    }
+
+    // Escape: close modals/drawers
+    if (e.key === 'Escape') {
+      if ($('bulkModal').classList.contains('open')) { $('bulkModal').classList.remove('open'); }
+      if ($('historyDrawer').classList.contains('open')) { $('historyDrawer').classList.remove('open'); }
     }
   });
 }

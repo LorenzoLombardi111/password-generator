@@ -21,10 +21,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<script>
+(function(){var t=localStorage.getItem('suite_theme');if(t==='dark'||((!t)&&window.matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark')})();
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#faf9f6;--surface:#f4f2ee;--border:#e8e4dd;--text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#9e9b96;--accent:#C49A2A;--accent-hover:#A8831F;--accent-text:#ffffff;--shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04)}
-html.dark{--bg:#141412;--surface:#1e1c1a;--border:#2e2b27;--text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#6b6760;--accent:#D4A835;--accent-hover:#C49A2A;--accent-text:#ffffff;--shadow:0 1px 3px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2)}
+:root{--bg:#faf9f6;--surface:#f4f2ee;--border:#e8e4dd;--text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#706d68;--accent:#C49A2A;--accent-hover:#A8831F;--accent-text:#ffffff;--shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04)}
+html.dark{--bg:#141412;--surface:#1e1c1a;--border:#2e2b27;--text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#8a8680;--accent:#D4A835;--accent-hover:#C49A2A;--accent-text:#ffffff;--shadow:0 1px 3px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2)}
 html{font-size:15px;line-height:1.6;background:var(--bg);color:var(--text-primary);transition:background 0.15s ease,color 0.15s ease}
 body{font-family:"Lora",serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
@@ -372,9 +375,6 @@ h2{font-size:1.2rem}
 </div>
 
 <script>
-const saved=localStorage.getItem('suite_theme');
-if(saved==='dark')document.documentElement.classList.add('dark');
-else if(!saved&&window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark');
 document.getElementById('themeToggle').addEventListener('click',()=>{const d=document.documentElement.classList.toggle('dark');localStorage.setItem('suite_theme',d?'dark':'light')});
 </script>
 </body>
