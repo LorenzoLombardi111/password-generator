@@ -1,0 +1,27 @@
+# freepasswordgenerator.app
+
+## Summary
+freepasswordgenerator.app is a free, browser-based password generator that creates strong, cryptographically secure passwords instantly with no login, no cloud storage, and no tracking.
+
+## Key Facts
+- 100% client-side — passwords never leave the browser
+- Uses crypto.getRandomValues() for cryptographic randomness
+- Supports random passwords (4–128 characters) and passphrases (3–10 words)
+- Generates up to 20 passwords at once
+- Password strength meter with entropy and crack time estimates
+- No login, no account, no analytics, no cookies
+- Dark mode support
+- Mobile responsive
+- Bulk generate and download 50/100 passwords as .txt
+
+## Features
+- Adjustable password length and character types
+- Custom symbol sets
+- Exclude ambiguous characters (0, O, l, 1, I)
+- Passphrase mode with 2048-word dictionary
+- One-click copy and copy-all
+- Session-only password history (cleared on tab close)
+- Keyboard shortcuts for power users
+
+## Pages
+- https://freepasswordgenerator.app/ — Main password generator tool

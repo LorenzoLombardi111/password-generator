@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Password Generator Online - No Login Required | freepasswordgenerator.app</title>
+<meta name="description" content="Free online password generator. Create strong random passwords and passphrases in your browser. No login, no tracking. freepasswordgenerator.app">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freepasswordgenerator.app/">
+<meta property="og:title" content="Free Password Generator Online - No Login Required">
+<meta property="og:description" content="Create strong random passwords and passphrases in your browser. No login, no tracking.">
+<meta property="og:image" content="https://freepasswordgenerator.app/og-image.svg">
+<meta property="og:url" content="https://freepasswordgenerator.app/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Password Generator Online - No Login Required">
+<meta name="twitter:description" content="Create strong random passwords and passphrases in your browser. No login, no tracking.">
+<meta name="twitter:image" content="https://freepasswordgenerator.app/og-image.svg">
+<meta name="theme-color" content="#faf9f6">
+<link rel="manifest" href="/manifest.json">
+<!-- hreflang tags to be added when translations are available -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#faf9f6;--surface:#f4f2ee;--border:#e8e4dd;
+--text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#9e9b96;
+--accent:#C49A2A;--accent-hover:#A8831F;--accent-text:#ffffff;
+--destructive:#c0392b;
+--shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04);
+--strength-weak:#c0392b;--strength-fair:#e67e22;--strength-strong:#27ae60;--strength-very-strong:#1a8f4e;
+}
+html.dark{
+--bg:#141412;--surface:#1e1c1a;--border:#2e2b27;
+--text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#6b6760;
+--accent:#D4A835;--accent-hover:#C49A2A;--accent-text:#ffffff;
+--shadow:0 1px 3px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2);
+--strength-weak:#e74c3c;--strength-fair:#f39c12;--strength-strong:#2ecc71;--strength-very-strong:#27ae60;
+}
+html{font-size:15px;line-height:1.6;background:var(--bg);color:var(--text-primary);transition:background 0.15s ease,color 0.15s ease}
+body{font-family:"Lora",serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
+
+/* Header */
+.header{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0;position:relative;z-index:20}
+.brand{font-family:"DM Sans",sans-serif;font-size:15px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:8px}
+
+/* Buttons */
+.btn{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all 0.15s ease;border:none;outline:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--accent-text)}.btn-primary:hover{background:var(--accent-hover)}
+.btn-secondary{background:transparent;border:1px solid var(--border);color:var(--text-secondary)}.btn-secondary:hover{background:var(--surface)}
+.btn-destructive{background:transparent;border:1px solid var(--destructive);color:var(--destructive)}.btn-destructive:hover{background:var(--surface)}
+.btn-icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:none;border-radius:6px;cursor:pointer;color:var(--text-secondary);transition:all 0.15s ease}
+.btn-icon:hover{background:var(--surface)}.btn-icon:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Theme toggle */
+.theme-toggle{width:40px;height:24px;border-radius:12px;border:none;background:var(--border);cursor:pointer;position:relative;transition:background 0.15s ease;flex-shrink:0}
+html.dark .theme-toggle{background:var(--accent)}
+.theme-toggle::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:var(--bg);top:3px;left:3px;transition:transform 0.15s ease}
+html.dark .theme-toggle::after{transform:translateX(16px);background:var(--accent-text)}
+.theme-toggle-icon{position:absolute;top:50%;transform:translateY(-50%);font-size:12px;line-height:1}
+.theme-toggle .sun{left:5px}.theme-toggle .moon{right:5px}
+
+/* Main layout */
+.app-container{display:flex;flex:1;overflow:hidden;height:calc(100vh - 52px - 32px)}
+.main-area{flex:1;overflow-y:auto;display:flex;justify-content:center;padding:20px 24px}
+.generator{width:100%;max-width:640px}
+.right-panel{width:280px;overflow-y:auto;border-left:1px solid var(--border);padding:20px;flex-shrink:0;display:flex;flex-direction:column;gap:16px}
+
+/* Password output */
+.password-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.password-row{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;transition:border-color 0.15s ease}
+.password-row:hover{border-color:rgba(196,154,42,0.3)}
+.password-text{flex:1;font-family:"JetBrains Mono",monospace;font-size:16px;line-height:1.5;color:var(--text-primary);overflow-x:auto;white-space:nowrap;user-select:all;-webkit-user-select:all}
+.strength-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.password-actions{display:flex;align-items:center;gap:4px}
+.action-bar{display:flex;align-items:center;gap:8px;margin-bottom:24px}
+
+/* Mode toggle */
+.mode-toggle{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.mode-btn{flex:1;padding:8px 16px;font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;border:none;background:transparent;color:var(--text-secondary);cursor:pointer;transition:all 0.15s ease;text-align:center}
+.mode-btn.active{background:var(--accent);color:var(--accent-text)}
+
+/* Settings panel */
+.settings-panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px}
+.setting-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.setting-row+.setting-row{border-top:1px solid var(--border)}
+.setting-label{font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-primary);font-weight:500}
+.setting-sub{font-family:"DM Sans",sans-serif;font-size:11px;color:var(--text-muted);margin-top:2px}
+
+/* Toggle switch */
+.toggle{width:40px;height:22px;border-radius:11px;background:var(--border);border:none;cursor:pointer;position:relative;transition:background 0.15s ease;flex-shrink:0}
+.toggle.on{background:var(--accent)}
+.toggle::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:var(--bg);top:2px;left:2px;transition:transform 0.15s ease}
+.toggle.on::after{transform:translateX(18px);background:var(--accent-text)}
+
+/* Slider */
+.slider-group{display:flex;align-items:center;gap:12px;flex:1;max-width:320px}
+input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--border);outline:none;cursor:pointer}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer;transition:transform 0.15s ease}
+input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.1)}
+input[type="range"]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer}
+input[type="range"]::-moz-range-track{height:4px;border-radius:2px;background:var(--border)}
+
+/* Number/text inputs */
+.num-input{width:64px;text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 8px;font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-primary);transition:border-color 0.15s ease}
+.num-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(196,154,42,0.12)}
+.text-input{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-primary);width:100%;transition:border-color 0.15s ease}
+.text-input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(196,154,42,0.12)}
+select.text-input{cursor:pointer}
+
+/* Checkbox */
+.checkbox-row{display:flex;align-items:center;gap:8px;padding:8px 0}
+.checkbox-row input[type="checkbox"]{accent-color:var(--accent);width:16px;height:16px;cursor:pointer}
+.checkbox-row label{font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-secondary);cursor:pointer}
+
+/* Strength panel */
+.strength-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow)}
+.strength-bar-bg{width:100%;height:8px;border-radius:4px;background:var(--border);overflow:hidden;margin-bottom:12px}
+.strength-bar-fill{height:100%;border-radius:4px;transition:width 0.15s ease,background 0.15s ease}
+.strength-label{font-family:"DM Sans",sans-serif;font-size:18px;font-weight:700;margin-bottom:12px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px}
+.stat-value{font-family:"DM Sans",sans-serif;font-size:18px;font-weight:700;color:var(--text-primary);line-height:1.2}
+.stat-label{font-family:"DM Sans",sans-serif;font-size:10px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px}
+
+/* Security info */
+.security-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;gap:8px;align-items:flex-start}
+.security-card svg{flex-shrink:0;color:var(--text-muted);margin-top:2px}
+.security-card p{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--text-muted);line-height:1.5}
+
+/* Upgrade prompt */
+.upgrade-prompt{border-top:1px solid var(--border);padding-top:16px}
+.upgrade-prompt .title{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:4px}
+.upgrade-prompt .desc{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--text-muted);margin-bottom:8px;line-height:1.5}
+.upgrade-prompt .link{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--accent);cursor:pointer;text-decoration:none}
+
+/* Status bar */
+.status-bar{height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:var(--surface);border-top:1px solid var(--border);font-family:"DM Sans",sans-serif;font-size:12px;color:var(--text-muted);flex-shrink:0;position:relative;z-index:10}
+
+/* Suite badge */
+.suite-badge{position:fixed;bottom:36px;right:16px;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:400;color:var(--text-muted);z-index:10;padding:4px 8px}
+
+/* Toast */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text-primary);color:var(--bg);font-family:"DM Sans",sans-serif;font-size:13px;border-radius:8px;padding:10px 20px;box-shadow:var(--shadow);opacity:0;transition:opacity 0.15s ease,transform 0.15s ease;z-index:100;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* History drawer */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:50;opacity:0;pointer-events:none;transition:opacity 0.15s ease}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:360px;max-width:100vw;background:var(--bg);border-left:1px solid var(--border);z-index:51;transform:translateX(100%);transition:transform 0.15s ease;display:flex;flex-direction:column}
+.drawer-overlay.open .drawer{transform:translateX(0)}
+.drawer-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.drawer-title{font-family:"DM Sans",sans-serif;font-size:15px;font-weight:600;color:var(--text-primary)}
+.drawer-notice{font-family:"DM Sans",sans-serif;font-size:11px;color:var(--text-muted);padding:12px 20px;border-bottom:1px solid var(--border)}
+.drawer-body{flex:1;overflow-y:auto;padding:12px 20px}
+.history-item{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.history-pw{flex:1;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.history-time{font-family:"DM Sans",sans-serif;font-size:11px;color:var(--text-muted);white-space:nowrap}
+.drawer-footer{padding:16px 20px;border-top:1px solid var(--border)}
+
+/* Bulk modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:60;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.15s ease}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{background:var(--surface);border-radius:12px;max-width:480px;width:90%;padding:32px;box-shadow:var(--shadow)}
+.modal h3{font-family:"DM Sans",sans-serif;font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:16px}
+.modal .field{margin-bottom:16px}
+.modal .field label{display:block;font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-secondary);margin-bottom:8px}
+.modal .radio-group{display:flex;gap:12px}
+.modal .radio-option{display:flex;align-items:center;gap:6px;font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-primary);cursor:pointer}
+.modal .radio-option input{accent-color:var(--accent)}
+.modal .security-notice{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--text-muted);background:var(--bg);padding:12px;border-radius:8px;margin-bottom:20px;line-height:1.5}
+.modal .actions{display:flex;gap:8px;justify-content:flex-end}
+
+/* Strength mobile card */
+.strength-mobile{display:none;margin-bottom:24px}
+
+/* Password flash animation */
+@keyframes flash{0%{opacity:1}50%{opacity:0.5}100%{opacity:1}}
+.password-list.flash .password-row{animation:flash 0.2s ease}
+
+/* Responsive */
+@media(max-width:768px){
+.right-panel{display:none}
+.strength-mobile{display:block}
+.main-area{padding:16px}
+.generator{max-width:100%}
+.password-text{font-size:14px;overflow:hidden;text-overflow:ellipsis}
+.header{padding:0 16px}
+.status-bar{padding:0 16px}
+.suite-badge .full{display:none}.suite-badge .short{display:inline}
+.slider-group{max-width:100%}
+.setting-row{flex-wrap:wrap;gap:8px}
+}
+@media(min-width:769px){
+.suite-badge .short{display:none}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "freepasswordgenerator.app",
+  "url": "https://freepasswordgenerator.app/",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free online password generator. Create strong random passwords and passphrases in your browser. No login, no tracking."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is freepasswordgenerator.app really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, freepasswordgenerator.app is completely free with no hidden costs, no account required, and no premium tier needed for any password generation feature. All core functionality is available to everyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the passwords generated truly random?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. freepasswordgenerator.app uses the Web Crypto API's crypto.getRandomValues() method, which provides cryptographically secure random numbers. This is the same randomness source used by professional password managers and security tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to generate passwords in a browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, when done correctly. freepasswordgenerator.app generates all passwords entirely in your browser using client-side JavaScript. No passwords are ever sent to any server. The tool works offline once loaded and uses no analytics or tracking scripts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a passphrase and should I use one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A passphrase is a password made of multiple random words, like 'correct-horse-battery-staple'. Passphrases are easier to remember while still being very secure. A 4-word passphrase from a 2048-word list provides about 44 bits of entropy, and longer passphrases provide even more security."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should my password be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For most accounts, 16 characters or more is recommended. For high-security accounts like email or banking, use 20+ characters. freepasswordgenerator.app supports passwords up to 128 characters long. The longer the password and the more character types included, the stronger it will be."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does freepasswordgenerator.app store my passwords?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. freepasswordgenerator.app never stores passwords in localStorage or on any server. A temporary history of your last 20 generated passwords is kept in sessionStorage, which is automatically cleared when you close the browser tab. No data ever leaves your browser."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://freepasswordgenerator.app/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <a class="brand" href="/">freepasswordgenerator.app</a>
+  <nav class="header-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    <button class="btn btn-secondary" id="historyBtn">History</button>
+    <button class="btn btn-secondary" id="bulkBtn">Bulk Generate</button>
+  </nav>
+</header>
+
+<!-- Main app -->
+<div class="app-container">
+  <main class="main-area">
+    <div class="generator">
+      <!-- Password output -->
+      <div class="password-list" id="passwordList"></div>
+      <div class="action-bar">
+        <button class="btn btn-secondary" id="copyAllBtn">Copy All</button>
+        <button class="btn btn-primary" id="regenBtn">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8a6 6 0 0 1 10.3-4.1"/><path d="M14 8a6 6 0 0 1-10.3 4.1"/><path d="M12.3 1v3h-3"/><path d="M3.7 15v-3h3"/></svg>
+          Regenerate
+        </button>
+      </div>
+
+      <!-- Mode toggle -->
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-mode="random">Random</button>
+        <button class="mode-btn" data-mode="passphrase">Passphrase</button>
+      </div>
+
+      <!-- Settings -->
+      <div class="settings-panel">
+        <!-- Random mode settings -->
+        <div id="randomSettings">
+          <div class="setting-row">
+            <span class="setting-label">Length</span>
+            <div class="slider-group">
+              <input type="range" id="lengthSlider" min="4" max="128" value="16">
+              <input type="number" class="num-input" id="lengthNum" min="4" max="128" value="16">
+            </div>
+          </div>
+          <div class="setting-row">
+            <div><span class="setting-label">Uppercase</span><div class="setting-sub">A-Z</div></div>
+            <button class="toggle on" data-type="upper" aria-label="Toggle uppercase"></button>
+          </div>
+          <div class="setting-row">
+            <div><span class="setting-label">Lowercase</span><div class="setting-sub">a-z</div></div>
+            <button class="toggle on" data-type="lower" aria-label="Toggle lowercase"></button>
+          </div>
+          <div class="setting-row">
+            <div><span class="setting-label">Numbers</span><div class="setting-sub">0-9</div></div>
+            <button class="toggle on" data-type="numbers" aria-label="Toggle numbers"></button>
+          </div>
+          <div class="setting-row">
+            <div><span class="setting-label">Symbols</span><div class="setting-sub">!@#$%...</div></div>
+            <button class="toggle on" data-type="symbols" aria-label="Toggle symbols"></button>
+          </div>
+          <div class="setting-row" id="symbolInputRow">
+            <span class="setting-label">Custom symbols</span>
+            <input type="text" class="text-input" id="symbolInput" value="!@#$%^&*()-_=+[]{}|;:,.<>?/" style="max-width:240px">
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="excludeAmbiguous">
+            <label for="excludeAmbiguous">Exclude ambiguous characters (0, O, l, 1, I)</label>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Number of passwords</span>
+            <input type="number" class="num-input" id="countInput" min="1" max="20" value="5">
+          </div>
+        </div>
+
+        <!-- Passphrase mode settings -->
+        <div id="passphraseSettings" style="display:none">
+          <div class="setting-row">
+            <span class="setting-label">Word count</span>
+            <div class="slider-group">
+              <input type="range" id="wordCountSlider" min="3" max="10" value="4">
+              <input type="number" class="num-input" id="wordCountNum" min="3" max="10" value="4">
+            </div>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Separator</span>
+            <select class="text-input" id="separatorSelect" style="max-width:180px">
+              <option value="-">Hyphen (-)</option>
+              <option value=" ">Space</option>
+              <option value=".">Period (.)</option>
+              <option value="_">Underscore (_)</option>
+              <option value="random">Random number</option>
+            </select>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Capitalize words</span>
+            <button class="toggle on" id="capitalizeToggle" aria-label="Toggle capitalize"></button>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Add trailing number</span>
+            <button class="toggle" id="trailingNumToggle" aria-label="Toggle trailing number"></button>
+          </div>
+          <div class="setting-row">
+            <span class="setting-label">Number of passwords</span>
+            <input type="number" class="num-input" id="ppCountInput" min="1" max="20" value="5">
+          </div>
+        </div>
+      </div>
+
+      <!-- Strength mobile -->
+      <div class="strength-mobile" id="strengthMobile"></div>
+    </div>
+  </main>
+
+  <!-- Right panel -->
+  <aside class="right-panel" id="rightPanel">
+    <div class="strength-card" id="strengthCard">
+      <div class="strength-bar-bg"><div class="strength-bar-fill" id="strengthBar"></div></div>
+      <div class="strength-label" id="strengthLabel">Strong</div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value" id="statEntropy">--</div><div class="stat-label">Entropy</div></div>
+        <div class="stat-card"><div class="stat-value" id="statCrackTime">--</div><div class="stat-label">Crack Time</div></div>
+        <div class="stat-card"><div class="stat-value" id="statPoolSize">--</div><div class="stat-label">Pool Size</div></div>
+        <div class="stat-card"><div class="stat-value" id="statCombinations">--</div><div class="stat-label">Combinations</div></div>
+      </div>
+    </div>
+    <div class="security-card">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+      <p>Generated locally using crypto.getRandomValues(). Passwords never leave your browser.</p>
+    </div>
+    <div class="upgrade-prompt" id="upgrade-prompt">
+      <div class="title">&#128274; Sync Password Vault</div>
+      <div class="desc">Save, organize, and sync your passwords across devices with encrypted cloud storage</div>
+      <a class="link" href="https://freesuite.app" target="_blank" rel="noopener">Unlock with freesuite.app &middot; $2.88/mo</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Status bar -->
+<footer class="status-bar">
+  <span>Generated with crypto.getRandomValues() &mdash; never sent to any server</span>
+  <span>Space to regenerate</span>
+</footer>
+
+<!-- Suite badge -->
+<div class="suite-badge"><span class="full">by freesuite.app</span><span class="short">freesuite.app</span></div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- History drawer -->
+<div class="drawer-overlay" id="historyDrawer">
+  <div class="drawer">
+    <div class="drawer-header">
+      <span class="drawer-title">Password History</span>
+      <button class="btn-icon" id="closeHistory" aria-label="Close history">&times;</button>
+    </div>
+    <div class="drawer-notice">History is cleared when you close this tab</div>
+    <div class="drawer-body" id="historyBody"></div>
+    <div class="drawer-footer">
+      <button class="btn btn-destructive" id="clearHistoryBtn" style="width:100%">Clear History</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bulk modal -->
+<div class="modal-overlay" id="bulkModal">
+  <div class="modal">
+    <h3>Bulk Generate Passwords</h3>
+    <div class="field">
+      <label>Number of passwords</label>
+      <div class="radio-group">
+        <label class="radio-option"><input type="radio" name="bulkCount" value="50" checked> 50</label>
+        <label class="radio-option"><input type="radio" name="bulkCount" value="100"> 100</label>
+      </div>
+    </div>
+    <div class="security-notice">This file will contain plaintext passwords. Store it securely or delete after use.</div>
+    <div class="actions">
+      <button class="btn btn-secondary" id="closeBulk">Cancel</button>
+      <button class="btn btn-primary" id="bulkGenerate">Generate &amp; Download</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEO Content Section -->
+<section class="seo-content" style="max-width:800px;margin:0 auto;padding:64px 24px;font-family:'Lora',serif;color:var(--text-primary);line-height:1.8">
+  <article>
+    <h1 style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;margin-bottom:24px;line-height:1.3">Free Password Generator Online &mdash; No Login Required</h1>
+    <p style="margin-bottom:20px">freepasswordgenerator.app is a free online password generator that creates strong, cryptographically secure passwords directly in your browser with no login, no account, and no data sent to any server. Generate random passwords up to 128 characters or memorable passphrases using common English words. freepasswordgenerator.app uses your browser's built-in crypto.getRandomValues() API &mdash; the same randomness source used by password managers and security tools &mdash; to ensure every password is truly random and unpredictable. Choose from uppercase letters, lowercase letters, numbers, and symbols, or create easy-to-remember passphrases from a dictionary of over 2,048 words. Every password is generated instantly, and you can create up to 20 at once. A built-in strength meter shows entropy in bits and estimated crack time so you know exactly how secure your password is.</p>
+
+    <h2 style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin:32px 0 16px">What features does freepasswordgenerator.app offer?</h2>
+    <p style="margin-bottom:16px">freepasswordgenerator.app generates passwords up to 128 characters long with full control over character composition. You can toggle uppercase letters, lowercase letters, numbers, and symbols independently, and even customize which symbols to include or exclude from your passwords.</p>
+    <p style="margin-bottom:16px">The passphrase mode supports a dictionary of over 2,048 common English words, letting you create memorable passwords like "correct-horse-battery-staple" with configurable word counts from 3 to 10 words and multiple separator options.</p>
+    <p style="margin-bottom:16px">A real-time strength analysis calculates entropy in bits and estimated crack time at 10 billion guesses per second, giving you an objective measure of password security. The strength meter categorizes passwords as Weak, Fair, Strong, or Very Strong.</p>
+    <p style="margin-bottom:16px">You can generate up to 20 passwords at once and copy them individually or all together with a single click. For larger needs, the bulk generation mode creates 50 or 100 passwords and downloads them as a text file.</p>
+    <p style="margin-bottom:16px">All generation uses crypto.getRandomValues() for cryptographic randomness &mdash; the same API used by professional security tools. An option to exclude ambiguous characters (0, O, l, 1, I) helps prevent confusion when typing passwords manually.</p>
+    <p style="margin-bottom:16px">The app includes dark mode, keyboard shortcuts for power users, and a session-only password history that is automatically cleared when you close the tab.</p>
+
+    <h2 style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin:32px 0 16px">How does this free password generator work?</h2>
+    <p style="margin-bottom:16px">Using freepasswordgenerator.app takes just a few seconds. First, open the site in any modern browser &mdash; no download, no installation, and no account needed. The generator loads instantly and creates five strong passwords with default settings as soon as the page opens.</p>
+    <p style="margin-bottom:16px">Next, adjust the settings to match your needs. Use the slider to set your desired password length from 4 to 128 characters, toggle character types on or off, or switch to passphrase mode for word-based passwords. Every change regenerates passwords automatically so you always see fresh results.</p>
+    <p style="margin-bottom:16px">Finally, click the copy button next to any password to copy it to your clipboard, or use "Copy All" to grab all generated passwords at once. The strength meter on the side shows you exactly how strong each password is, measured in entropy bits and estimated crack time.</p>
+
+    <h2 style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin:32px 0 16px">Why is freepasswordgenerator.app better than other password generators?</h2>
+    <p style="margin-bottom:16px">Many online password generators are loaded with ads, require accounts, or generate passwords on their servers before sending them to your browser. freepasswordgenerator.app takes a different approach: every password is generated entirely in your browser using the Web Crypto API, and no data ever leaves your device.</p>
+    <p style="margin-bottom:16px">The tool is genuinely free with no premium tiers, no paywalls, and no feature limitations. You get the full password generator with all options available immediately, no strings attached.</p>
+    <p style="margin-bottom:16px">Privacy is built into the design, not bolted on as an afterthought. There are no analytics scripts, no tracking cookies, no server-side logging, and no third-party requests after the page loads. The password history uses sessionStorage, which the browser automatically purges when you close the tab.</p>
+    <p style="margin-bottom:16px">freepasswordgenerator.app supports both random character passwords and word-based passphrases, with detailed strength analysis for both. The clean, fast interface works on desktop and mobile without the bloat and clutter found on most alternatives.</p>
+
+    <h2 style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin:32px 0 16px">Is freepasswordgenerator.app private and safe to use?</h2>
+    <p style="margin-bottom:16px">All password generation happens entirely in your browser using the crypto.getRandomValues() API, which provides cryptographically secure random numbers. No passwords are ever transmitted to any server &mdash; the tool works completely offline once the page has loaded.</p>
+    <p style="margin-bottom:16px">freepasswordgenerator.app includes no analytics, no advertising scripts, no cookies, and no tracking of any kind. After the initial page load, the app makes zero network requests.</p>
+    <p style="margin-bottom:16px">Password history is stored only in sessionStorage, a browser feature that automatically clears all data when you close the tab. Passwords are never written to localStorage or any persistent storage. Your preference settings (like password length and character types) are saved to localStorage for convenience, but actual generated passwords never are.</p>
+
+    <h2 style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:600;margin:32px 0 16px">Frequently Asked Questions</h2>
+    <details style="margin-bottom:12px;border:1px solid var(--border);border-radius:8px;padding:16px">
+      <summary style="font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">Is freepasswordgenerator.app really free?</summary>
+      <p style="margin-top:12px">Yes, freepasswordgenerator.app is completely free with no hidden costs, no account required, and no premium tier needed for any password generation feature. All core functionality is available to everyone.</p>
+    </details>
+    <details style="margin-bottom:12px;border:1px solid var(--border);border-radius:8px;padding:16px">
+      <summary style="font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">Are the passwords generated truly random?</summary>
+      <p style="margin-top:12px">Yes. freepasswordgenerator.app uses the Web Crypto API's crypto.getRandomValues() method, which provides cryptographically secure random numbers. This is the same randomness source used by professional password managers and security tools.</p>
+    </details>
+    <details style="margin-bottom:12px;border:1px solid var(--border);border-radius:8px;padding:16px">
+      <summary style="font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">Is it safe to generate passwords in a browser?</summary>
+      <p style="margin-top:12px">Yes, when done correctly. freepasswordgenerator.app generates all passwords entirely in your browser using client-side JavaScript. No passwords are ever sent to any server. The tool works offline once loaded and uses no analytics or tracking scripts.</p>
+    </details>
+    <details style="margin-bottom:12px;border:1px solid var(--border);border-radius:8px;padding:16px">
+      <summary style="font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">What is a passphrase and should I use one?</summary>
+      <p style="margin-top:12px">A passphrase is a password made of multiple random words, like "correct-horse-battery-staple". Passphrases are easier to remember while still being very secure. A 4-word passphrase from a 2048-word list provides about 44 bits of entropy, and longer passphrases provide even more security.</p>
+    </details>
+    <details style="margin-bottom:12px;border:1px solid var(--border);border-radius:8px;padding:16px">
+      <summary style="font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">How long should my password be?</summary>
+      <p style="margin-top:12px">For most accounts, 16 characters or more is recommended. For high-security accounts like email or banking, use 20+ characters. freepasswordgenerator.app supports passwords up to 128 characters long. The longer the password and the more character types included, the stronger it will be.</p>
+    </details>
+    <details style="margin-bottom:12px;border:1px solid var(--border);border-radius:8px;padding:16px">
+      <summary style="font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer">Does freepasswordgenerator.app store my passwords?</summary>
+      <p style="margin-top:12px">No. freepasswordgenerator.app never stores passwords in localStorage or on any server. A temporary history of your last 20 generated passwords is kept in sessionStorage, which is automatically cleared when you close the browser tab. No data ever leaves your browser.</p>
+    </details>
+  </article>
+
+  <footer style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted)">
+    <p>&copy; freepasswordgenerator.app</p>
+    <div class="more-tools-placeholder" data-suite="freetools"></div>
+  </footer>
+</section>
+
+<script>
+// ===== WORD LIST (EFF-inspired, 2048 common words) =====
+const WORDS=[
+"abbey","ability","able","abode","abolish","about","above","absence","absolute","absolve","absorb","abstain","abstract","abuse","academic","accent",
+"accept","accepted","access","accident","account","accurate","ached","achieve","achieved","achiever","acid","acquire","across","acrylic","acted","action",
+"activate","active","actor","actual","actually","acute","adapt","addition","address","adept","adequate","adjourn","adjust","adjusted","admire","admit",
+"adopt","adore","adult","advance","advanced","adverse","advice","advocate","aegis","affected","affirm","affluent","afford","afoot","after","again",
+"aged","agenda","agent","aging","agony","agree","agreed","ahead","aided","aimed","airplane","aisle","alarm","album","alert","algae",
+"alibi","alien","align","alive","alley","alliance","allow","allowing","alone","along","alpha","alphabet","also","alter","although","aluminum",
+"always","amber","ambition","amend","amending","amino","among","amount","ample","amuse","analysis","ancestor","anchor","angel","anger","angle",
+"angry","animated","anime","ankle","annex","announce","annual","annually","answer","anvil","anything","anyway","anywhere","aorta","apart","append",
+"appetite","applause","apple","apply","approach","approval","approved","apron","aptly","aquarium","archives","arctic","area","arena","argue","argument",
+"arise","armor","army","around","arrive","arrow","artist","artistic","arts","ashes","aside","asked","aspect","assemble","assembly","assert",
+"asset","assign","assist","assume","assuming","asterisk","atlas","attach","attached","attack","attempts","attend","attended","attic","attract","audience",
+"audit","audition","august","auto","avert","avoid","awake","award","aware","awful","axiom","axis","back","backbone","backdrop","backward",
+"bacon","bacteria","badge","badly","bagel","baked","baker","bakery","balance","balanced","balcony","ball","ballet","balloon","bamboo","banana",
+"band","bands","bank","banking","bankrupt","banks","banner","bargain","bargains","barley","barn","baron","barrier","base","baseline","bases",
+"basic","basin","basis","basket","batch","bath","bathroom","batik","battery","beach","beacon","beads","bean","beans","bear","beard",
+"bearing","bears","beast","beat","beauty","because","becoming","bedroom","bedrooms","beds","beef","been","before","began","begin","behalf",
+"behave","behavior","behind","being","believe","believed","believer","bell","belly","belong","belonged","below","belt","bench","bend","beneath",
+"benefit","benjamin","berry","besides","best","betrayal","better","between","beverage","beyond","bible","biggest","bike","bikes","bill","billion",
+"bind","bingo","bird","birth","birthday","bishop","bite","bitter","black","blade","blame","blanch","bland","blank","blanket","blast",
+"blaze","bleed","blend","blender","bless","blind","blink","bliss","block","bloke","blood","bloom","blooming","blouse","blown","blue",
+"blues","bluff","blunt","blur","board","boarding","boards","boat","boats","body","bold","boldness","bolt","bolts","bomb","bond",
+"bone","bones","bonfire","bonnet","bonus","book","booking","bookmark","books","boolean","boom","boost","boot","booth","bore","born",
+"borrow","borrowed","boss","botany","both","bottle","boulder","bounce","bound","boundary","bout","bovine","bowl","bowtie","boxed","brace",
+"bracelet","bracket","brain","brand","brass","brave","bread","breadth","break","breaking","breed","breeding","breeze","brick","bride","bridge",
+"brief","bright","brightly","bring","bringing","brisk","broad","broadway","broke","broker","bronze","brook","broth","brother","brothers","brown",
+"browse","browser","browsing","brush","brushing","bubble","bucket","bucks","buddy","budget","buffalo","buffet","buggy","build","builder","building",
+"built","bulge","bulk","bulkier","bulletin","bump","bumping","bunch","bundle","bunny","burden","bureau","burn","burner","burning","burns",
+"burst","bury","bush","bustling","busy","buttered","button","buyer","buzz","cabin","cabinet","cable","cache","cactus","cadet","cafe",
+"cage","cake","calcium","calculus","calendar","caliber","call","calling","calm","came","camel","camp","campaign","campfire","candid","candle",
+"candy","canister","canvas","capable","capacity","cape","capital","captain","capture","captured","carbon","card","cardinal","cards","care","career",
+"carefree","careful","cargo","carnival","carriage","carrier","carry","cart","case","cash","cashmere","cast","castle","casual","casualty","catalog",
+"catch","category","cater","catering","caught","cause","caution","cautious","cave","cedar","cells","cellular","cement","center","central","cents",
+"century","cereal","ceremony","certain","chain","chair","chairman","chalk","chamber","chambers","champ","champion","chance","change","channel","chapel",
+"chapter","chapters","charm","charming","chart","charter","chase","chat","cheap","cheaper","check","checkbox","checked","cheek","cheer","cheerful",
+"cheese","chemical","cherry","chess","chest","chicken","chief","child","children","chile","chill","chimney","china","chip","choosing","chop",
+"chord","chose","chosen","chunk","church","cider","cigar","circle","circles","circuit","circular","circus","cite","cited","citizen","citrus",
+"city","civic","civil","civilian","clad","claim","claimed","claiming","claims","clam","clamp","clan","clang","clap","clash","clasp",
+"class","classic","classify","claw","clay","clean","cleaned","cleaner","clear","clearing","clearly","clerk","clever","click","client","cliff",
+"climate","climb","climbing","cling","clinic","clinical","clinker","clip","cloak","clock","cloister","clone","close","closest","closing","cloth",
+"clothing","cloud","clover","club","clubs","clue","clump","clung","cluster","coach","coaching","coal","coals","coast","coaster","coat",
+"coating","coatings","cobalt","coconut","coconuts","cocoon","code","coffee","coil","coin","coincide","coins","cold","collapse","collect","college",
+"colonial","colony","color","colorado","colorful","colt","column","comb","combat","combine","come","comeback","comedian","comedy","comes","comet",
+"comfort","comic","coming","comma","command","commence","comment","commerce","commit","common","communal","commuter","compact","company","compare","compared",
+"compete","compiler","complain","complete","complex","compose","composed","composer","compound","computer","concept","concern","conclude","concrete","condense","conduct",
+"conducts","cone","confess","confetti","confided","confirm","conform","confused","congress","conjunct","connect","conquest","consent","consider","consists","constant",
+"consult","consumed","consumer","contain","contains","contempt","content","contents","contest","context","continue","contract","contrast","control","convert","convex",
+"convince","cook","cookbook","cookie","cooking","cool","cooling","coolness","cope","copper","copy","coral","cord","core","cork","corn",
+"corner","correct","corridor","cosmetic","cosmic","cost","costumer","cottage","cotton","couch","cough","could","council","count","counter","counting",
+"country","county","couple","coupling","courage","course","court","courtesy","cousin","cover","covering","covet","cowardly","cozy","crab","crack",
+"cracker","cradle","craft","crafts","crane","crash","crawl","crazy","cream","create","creation","creative","creator","creature","credit","credited",
+"creed","creek","creep","crest","crew","crews","cricket","criminal","crimson","crisis","crisp","critical","critique","crop","cross","crossing",
+"crow","crowd","crown","cruel","cruise","crush","crystal","cube","cuisine","cult","cultural","culture","cunning","cupboard","cups","curb",
+"cure","curious","curl","currency","current","cursory","curtain","curtains","curve","cushion","custom","customer","customs","cute","cycle","cylinder",
+"daddy","daily","dairy","dale","damage","dame","damp","dance","dancing","danger","dare","daring","dark","dart","dash","data",
+"database","date","dated","dawn","days","dead","deadline","deaf","deal","dealing","deals","dealship","dealt","dear","death","debate",
+"debt","debug","debut","decal","decay","december","decent","deciding","decision","deck","declare","declared","decline","decor","decorate","decoy",
+"decrease","decrypt","deducted","deed","deem","deep","deer","default","defender","defense","deficit","define","defining","definite","degree","delay",
+"delicate","deliver","delivery","delta","demand","demanded","demo","democrat","demolish","denial","denim","dense","density","deny","depart","departed",
+"deploy","deposit","depot","depth","deputy","derby","descent","describe","desert","deserve","design","designer","desire","desk","desktop","desolate",
+"despite","dessert","destiny","detailed","details","detect","detected","detox","develop","devil","devote","devoted","diabetes","diagonal","dial","dialect",
+"dialog","dialogue","diamond","diamonds","diaper","diary","dice","diet","differ","digit","digital","dilemma","dime","dimly","dimmer","dine",
+"diner","dinette","dining","dinner","dinosaur","diploma","diplomat","direct","directed","director","dirt","dirty","disable","disabled","disagree","disaster",
+"disc","discard","disclose","disco","discount","discover","discrete","discuss","disease","dish","disk","dismiss","disorder","dispatch","display","disposal",
+"disposed","dispute","distance","distant","distinct","district","diverse","divide","divided","dividend","dock","docking","doctrine","document","dodge","does",
+"dolls","dolphin","domain","dome","domestic","dominant","donated","donation","done","donkey","donor","doom","door","doors","doorstep","doorway",
+"dormancy","dorms","dose","doses","double","doubt","doubtful","dough","dove","down","downhill","download","downtown","dozen","draft","dragged",
+"drain","drake","drama","dramatic","drank","drape","draw","drawer","drawing","drawings","drawn","draws","dream","dress","dressed","drew",
+"dried","drift","drifting","drill","drink","drinking","drive","drop","dropping","drops","drought","drove","drown","drugs","drum","drums",
+"drunk","drunking","dryer","drying","dual","duck","dude","duel","dues","duke","dull","dullness","dumb","dummy","dump","dune",
+"duplex","durable","duration","during","dusk","dust","dusty","duty","dwarf","dwell","dwelling","dying","dynamic","dynamics","each","eager",
+"eagerly","eagle","earliest","early","earmark","earn","earned","earning","earnings","earth","ease","easily","east","eastern","easy","eaten",
+"eating","ebony","echo","eclipse","economic","economy","edge","edges","edit","edited","edition","editor","educated","educator","effect","efficacy",
+"effort","eight","eighteen","eighth","either","eject","elbow","elder","elderly","elect","election","electric","elegance","elegant","element","elevator",
+"eligible","elite","else","embargo","embedded","ember","embodied","embrace","emerald","emerge","emerging","eminent","emission","emit","emotion","emperor",
+"empire","employed","employee","employer","empty","emulsion","enable","enabled","enabling","encoding","ended","endemic","ending","endless","endorsed","ends",
+"endure","enemy","energy","enforce","engage","engine","engineer","enhance","enjoy","enjoyed","enormous","enough","enquiry","enriched","enrolled","ensemble",
+"ensue","ensure","enter","entering","entire","entirely","entitled","entrance","entropy","entry","envelope","enviable","epic","episode","equal","equality",
+"equation","equip","equipped","erase","eraser","error","escalate","escape","especial","espresso","essay","essence","estate","estimate","etching","ethic",
+"ethical","euro","evade","evaluate","evasion","even","evening","event","eventual","every","evidence","evident","evil","evolve","evolving","exact",
+"exalt","exam","examine","examiner","example","exceed","excel","except","excess","exchange","excite","excited","excluded","excuse","exec","execute",
+"exempt","exercise","exerting","exhaust","exhibit","exile","exist","existed","existing","exit","expanded","expect","expected","expedite","expel","expense",
+"expenses","expert","explain","explicit","exploit","explore","explored","explorer","export","exported","exporter","exposure","express","extend","extended","extent",
+"external","extra","extreme","extremes","eyebrows","eyed","eyes","fable","fabric","fabulous","face","facebook","faced","facet","facial","facility",
+"fact","factor","factored","factory","faculty","fade","fading","fail","failure","faint","fair","fairly","fairy","faith","faithful","fall",
+"fallen","falls","false","fame","familiar","families","family","famine","fancy","fang","farce","fare","farm","farmer","farmland","farms",
+"fashion","fast","fatal","fault","feast","fence","ferry","fetch","fever","fiber","field","fifth","fifty","fight","final","first",
+"fixed","flags","flame","flash","fleet","flesh","flies","float","flock","flood","floor","flora","floss","flour","fluid","flush",
+"focal","folks","force","forge","forth","forum","found","foxes","frame","frank","fraud","fresh","front","frost","froze","fruit",
+"fully","funds","funny","fuzzy","games","gauge","genre","ghost","giant","given","giver","glade","glare","glass","gleam","glide",
+"globe","gloom","gloss","glove","glyph","goats","going","grace","grade","grain","grand","grant","grape","graph","grasp","grass",
+"grave","great","green","greet","grief","grill","grind","groan","groom","gross","group","grove","grown","guard","guess","guest",
+"guide","guild","guilt","habit","happy","harsh","haste","haunt","haven","heart","heavy","hedge","hello","herbs","hinge","hippo",
+"hobby","holds","homes","honey","honor","hoped","horse","hotel","house","hover","human","humor","hurry","ideal","image","imply",
+"inbox","index","indie","inner","input","intro","issue","ivory","jewel","joins","joint","joker","jolly","judge","juice","jumbo",
+"jumps","karma","kayak","keeps","kicks","kings","kitty","knack","kneel","knife","knobs","knock","knots","known","label","labor",
+"lance","large","laser","later","laugh","layer","leads","learn","lease","least","leave","legal","lemon","level","light","liked",
+"limit","linen","liner","links","lions","liver","llama","lobby","local","lodge","logic","login","loner","looks","lotus","loved",
+"lover","lower","loyal","lucid","lucky","lunar","lunch","lying","macro","magic","major","maker","manga","manor","maple","march",
+"marks","marsh","masks","match","maybe","mayor","meals","means","media","melon","mercy","merge","merit","merry","messy","metal",
+"meter","might","miles","mills","mimic","minds","minor","minus","misty","mixer","model","money","month","moose","moral","motif",
+"motor","motto","mount","mouse","moved","movie","muddy","music","naive","named","naval","nerve","never","nexus","night","ninja",
+"noble","noise","north","noted","novel","nurse","oasis","occur","ocean","offer","often","olive","onset","opera","opted","orbit",
+"order","organ","other","ought","outdo","outer","owned","oxide","paced","paint","pairs","panel","panic","paper","parts","party",
+"paste","patch","pause","peace","peach","pearl","pedal","penny","perch","phase","phone","photo","piano","picks","piece","pilot",
+"pinch","pixel","pizza","place","plain","plane","plant","plate","plaza","plead","pluck","plumb","poems","point","poker","polar",
+"polls","pond","pools","popup","porch","posed","pound","power","press","price","pride","prime","print","prior","prize","probe",
+"proof","prose","proud","prove","proxy","prune","pulse","punch","pupil","purse","queen","quota","quote","radar","radio","raise",
+"rally","ranch","range","rapid","ratio","reach","react","reads","ready","realm","rebel","recap","refer","relax","relay","reply",
+"retry","rider","ridge","rifle","right","rigid","rings","risky","rival","river","roads","roast","robin","robot","rocky","rogue",
+"roman","roots","roses","rough","round","route","rover","royal","rugby","ruins","ruled","ruler","rumor","rural","sadly","saint",
+"salad","salon","sandy","sauce","saved","scale","scare","scene","scent","scope","score","scout","scrap","seeds","sense","serve",
+"setup","seven","shade","shady","shaft","shake","shame","shape","share","shark","sharp","sheep","sheer","sheet","shelf","shell",
+"shift","shine","shirt","shock","shoot","shore","short","shout","shown","sides","siege","sight","sigma","signs","since","sixth",
+"sixty","sized","skate","skill","skull","slate","sleep","slice","slide","slope","smart","smell","smile","smoke","snake","solar",
+"solid","solve","songs","sorry","south","space","spare","spawn","speak","speed","spell","spend","spice","spike","spine","spoke",
+"spoon","spray","squad","stack","staff","stage","stain","stake","stalk","stall","stamp","stand","stare","stark","start","state",
+"stays","steal","steam","steel","steep","steer","stems","steps","stern","stick","stiff","still","stock","stoke","stone","stood",
+"store","storm","story","stout","stove","strip","stuck","study","stuff","style","sugar","suite","sunny","super","surge","swamp",
+"swarm","swear","sweat","sweep","sweet","swept","swift","swing","sword","table","taken","tales","talks","taste","taxes","teach",
+"tears","tempo","tends","tense","terms","theme","thick","thing","think","third","thorn","those","three","threw","throw","thumb",
+"tidal","tiger","tight","timer","title","today","token","tonal","torch","total","touch","tough","tours","tower","towns","toxic",
+"trace","track","trade","trail","train","trait","trash","treat","trees","trend","trial","tribe","trick","tried","trips","troop",
+"trout","truck","truly","trump","trunk","trust","truth","tulip","tuner","turns","tutor","twice","twins","twist","ultra","uncle",
+"under","union","unite","unity","until","upper","upset","urban","usage","usual","utter","vague","valid","value","valve","vault",
+"venue","verse","vigor","vinyl","viola","viral","virus","visit","vista","vital","vivid","vocal","vodka","voice","voter","wages",
+"walks","walls","waste","watch","water","waves","weeks","weigh","weird","wells","whale","wheat","wheel","where","which","while",
+"white","whole","whose","wider","width","winds","wines","wings","wired","witch","woman","women","woods","words","world","worse",
+"worst","worth","would","wound","woven","write","wrong","wrote","yacht","years","yield","young","yours","youth","zebra","zones"
+];
+
+// ===== APP STATE =====
+const S = {
+  mode: 'random',
+  length: 16,
+  upper: true,
+  lower: true,
+  numbers: true,
+  symbols: true,
+  customSymbols: '!@#$%^&*()-_=+[]{}|;:,.<>?/',
+  excludeAmbiguous: false,
+  count: 5,
+  wordCount: 4,
+  separator: '-',
+  capitalize: true,
+  trailingNumber: false,
+  passwords: [],
+};
+
+// ===== CRYPTO RANDOM =====
+function secureRandom(max) {
+  const arr = new Uint32Array(1);
+  crypto.getRandomValues(arr);
+  return arr[0] % max;
+}
+
+function secureRandomFloat() {
+  const arr = new Uint32Array(1);
+  crypto.getRandomValues(arr);
+  return arr[0] / 4294967296;
+}
+
+// ===== PASSWORD GENERATION =====
+function getCharPool() {
+  const ambiguousChars = '0O1lI';
+  let pool = '';
+  if (S.upper) { let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; if (S.excludeAmbiguous) chars = chars.replace(/[OI]/g, ''); pool += chars; }
+  if (S.lower) { let chars = 'abcdefghijklmnopqrstuvwxyz'; if (S.excludeAmbiguous) chars = chars.replace(/[l]/g, ''); pool += chars; }
+  if (S.numbers) { let chars = '0123456789'; if (S.excludeAmbiguous) chars = chars.replace(/[01]/g, ''); pool += chars; }
+  if (S.symbols) { let chars = S.customSymbols; pool += chars; }
+  return pool;
+}
+
+function generateRandomPassword(length) {
+  const pool = getCharPool();
+  if (!pool.length) return '';
+  let pw = '';
+  for (let i = 0; i < length; i++) {
+    pw += pool[secureRandom(pool.length)];
+  }
+  return pw;
+}
+
+function generatePassphrase() {
+  const words = [];
+  for (let i = 0; i < S.wordCount; i++) {
+    let word = WORDS[secureRandom(WORDS.length)];
+    if (S.capitalize) word = word[0].toUpperCase() + word.slice(1);
+    words.push(word);
+  }
+  let result;
+  if (S.separator === 'random') {
+    result = words.reduce((acc, w, i) => i === 0 ? w : acc + secureRandom(10) + w, '');
+  } else {
+    result = words.join(S.separator);
+  }
+  if (S.trailingNumber) result += secureRandom(100);
+  return result;
+}
+
+function generatePasswords(count) {
+  count = count || S.count;
+  const passwords = [];
+  for (let i = 0; i < count; i++) {
+    passwords.push(S.mode === 'random' ? generateRandomPassword(S.length) : generatePassphrase());
+  }
+  return passwords;
+}
+
+// ===== STRENGTH CALCULATION =====
+function calcStrength(pw) {
+  let poolSize, entropy;
+  if (S.mode === 'random') {
+    poolSize = getCharPool().length;
+    entropy = pw.length * Math.log2(poolSize || 1);
+  } else {
+    poolSize = WORDS.length;
+    entropy = S.wordCount * Math.log2(poolSize);
+    if (S.capitalize) entropy += S.wordCount;
+    if (S.trailingNumber) entropy += Math.log2(100);
+    if (S.separator === 'random') entropy += (S.wordCount - 1) * Math.log2(10);
+  }
+
+  const combinations = Math.pow(poolSize, S.mode === 'random' ? pw.length : S.wordCount);
+  const guessesPerSec = 1e10;
+  const crackSeconds = combinations / guessesPerSec;
+
+  let level, pct;
+  if (entropy < 40) { level = 'Weak'; pct = entropy / 40 * 25; }
+  else if (entropy < 60) { level = 'Fair'; pct = 25 + (entropy - 40) / 20 * 25; }
+  else if (entropy < 80) { level = 'Strong'; pct = 50 + (entropy - 60) / 20 * 25; }
+  else { level = 'Very Strong'; pct = 75 + Math.min((entropy - 80) / 40 * 25, 25); }
+
+  return { poolSize, entropy, combinations, crackSeconds, level, pct: Math.min(pct, 100) };
+}
+
+function formatCrackTime(seconds) {
+  if (!isFinite(seconds) || seconds <= 0) return 'instant';
+  if (seconds < 60) return Math.round(seconds) + ' seconds';
+  if (seconds < 3600) return Math.round(seconds / 60) + ' minutes';
+  if (seconds < 86400) return Math.round(seconds / 3600) + ' hours';
+  if (seconds < 31536000) return Math.round(seconds / 86400) + ' days';
+  const years = seconds / 31536000;
+  if (years < 1000) return Math.round(years) + ' years';
+  if (years < 1e6) return Math.round(years / 1000) + ' thousand years';
+  if (years < 1e9) return Math.round(years / 1e6) + ' million years';
+  if (years < 1e12) return Math.round(years / 1e9) + ' billion years';
+  if (years < 1e15) return '~10^' + Math.floor(Math.log10(years)) + ' years';
+  return '~10^' + Math.floor(Math.log10(years)) + ' years';
+}
+
+function formatCombinations(n) {
+  if (!isFinite(n) || n === 0) return '0';
+  const exp = Math.floor(Math.log10(n));
+  if (exp < 6) return n.toLocaleString();
+  const mantissa = (n / Math.pow(10, exp)).toFixed(2);
+  return mantissa + ' \u00d7 10^' + exp;
+}
+
+function strengthColor(level) {
+  switch (level) {
+    case 'Weak': return 'var(--strength-weak)';
+    case 'Fair': return 'var(--strength-fair)';
+    case 'Strong': return 'var(--strength-strong)';
+    case 'Very Strong': return 'var(--strength-very-strong)';
+  }
+}
+
+// ===== UI RENDERING =====
+const $ = id => document.getElementById(id);
+
+function renderPasswords() {
+  const list = $('passwordList');
+  list.innerHTML = S.passwords.map((pw, i) => {
+    const st = calcStrength(pw);
+    return `<div class="password-row">
+      <span class="password-text">${escapeHtml(pw)}</span>
+      <span class="strength-dot" style="background:${strengthColor(st.level)}"></span>
+      <button class="btn-icon copy-btn" data-index="${i}" aria-label="Copy password" title="Copy">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 0 1 2 9.5v-7A1.5 1.5 0 0 1 3.5 1h7A1.5 1.5 0 0 1 12 2.5V5"/></svg>
+      </button>
+    </div>`;
+  }).join('');
+
+  // Attach copy handlers
+  list.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.index);
+      copyText(S.passwords[idx]);
+      showToast('Copied!');
+    });
+  });
+
+  updateStrength();
+  saveHistory();
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function updateStrength() {
+  if (!S.passwords.length) return;
+  const st = calcStrength(S.passwords[0]);
+  const color = strengthColor(st.level);
+
+  // Desktop panel
+  $('strengthBar').style.width = st.pct + '%';
+  $('strengthBar').style.background = color;
+  $('strengthLabel').textContent = st.level;
+  $('strengthLabel').style.color = color;
+  $('statEntropy').textContent = Math.round(st.entropy) + ' bits';
+  $('statCrackTime').textContent = '~' + formatCrackTime(st.crackSeconds);
+  $('statPoolSize').textContent = S.mode === 'random' ? getCharPool().length + ' chars' : WORDS.length + ' words';
+  $('statCombinations').textContent = formatCombinations(st.combinations);
+
+  // Mobile panel
+  $('strengthMobile').innerHTML = `<div class="strength-card">
+    <div class="strength-bar-bg"><div class="strength-bar-fill" style="width:${st.pct}%;background:${color}"></div></div>
+    <div class="strength-label" style="color:${color}">${st.level}</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-value">${Math.round(st.entropy)} bits</div><div class="stat-label">Entropy</div></div>
+      <div class="stat-card"><div class="stat-value">~${formatCrackTime(st.crackSeconds)}</div><div class="stat-label">Crack Time</div></div>
+      <div class="stat-card"><div class="stat-value">${S.mode === 'random' ? getCharPool().length + ' chars' : WORDS.length + ' words'}</div><div class="stat-label">Pool Size</div></div>
+      <div class="stat-card"><div class="stat-value">${formatCombinations(st.combinations)}</div><div class="stat-label">Combinations</div></div>
+    </div>
+  </div>`;
+}
+
+function regenerate() {
+  S.passwords = generatePasswords();
+  const list = $('passwordList');
+  list.classList.add('flash');
+  setTimeout(() => list.classList.remove('flash'), 200);
+  renderPasswords();
+}
+
+// ===== CLIPBOARD =====
+function copyText(text) {
+  navigator.clipboard.writeText(text).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  });
+}
+
+// ===== TOAST =====
+let toastTimer;
+function showToast(msg) {
+  const t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ===== HISTORY =====
+function getHistory() {
+  try { return JSON.parse(sessionStorage.getItem('pw_history') || '[]'); } catch { return []; }
+}
+function saveHistory() {
+  const h = getHistory();
+  S.passwords.forEach(pw => {
+    h.unshift({ pw, time: Date.now() });
+  });
+  // Keep last 20
+  sessionStorage.setItem('pw_history', JSON.stringify(h.slice(0, 20)));
+}
+function renderHistory() {
+  const h = getHistory();
+  $('historyBody').innerHTML = h.length ? h.map(item => {
+    const d = new Date(item.time);
+    const time = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    return `<div class="history-item">
+      <span class="history-pw">${escapeHtml(item.pw)}</span>
+      <span class="history-time">${time}</span>
+      <button class="btn-icon hist-copy" aria-label="Copy">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="9" height="9" rx="1.5"/><path d="M5 11H3.5A1.5 1.5 0 0 1 2 9.5v-7A1.5 1.5 0 0 1 3.5 1h7A1.5 1.5 0 0 1 12 2.5V5"/></svg>
+      </button>
+    </div>`;
+  }).join('') : '<p style="font-family:DM Sans,sans-serif;font-size:13px;color:var(--text-muted);text-align:center;padding:32px 0">No passwords in history yet</p>';
+
+  $('historyBody').querySelectorAll('.hist-copy').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      copyText(h[i].pw);
+      showToast('Copied!');
+    });
+  });
+}
+
+// ===== SETTINGS PERSISTENCE =====
+function saveSettings() {
+  localStorage.setItem('pg_settings', JSON.stringify({
+    mode: S.mode, length: S.length, upper: S.upper, lower: S.lower,
+    numbers: S.numbers, symbols: S.symbols, customSymbols: S.customSymbols,
+    excludeAmbiguous: S.excludeAmbiguous, count: S.count, wordCount: S.wordCount,
+    separator: S.separator, capitalize: S.capitalize, trailingNumber: S.trailingNumber
+  }));
+}
+
+function loadSettings() {
+  try {
+    const s = JSON.parse(localStorage.getItem('pg_settings'));
+    if (s) Object.assign(S, s);
+  } catch {}
+}
+
+// ===== THEME =====
+function initTheme() {
+  const saved = localStorage.getItem('suite_theme');
+  if (saved === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else if (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.classList.add('dark');
+  }
+}
+
+// ===== INIT =====
+function updateSliderFill(slider) {
+  const pct = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+  slider.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--border) ${pct}%)`;
+}
+
+function syncUI() {
+  // Mode
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === S.mode));
+  $('randomSettings').style.display = S.mode === 'random' ? '' : 'none';
+  $('passphraseSettings').style.display = S.mode === 'passphrase' ? '' : 'none';
+
+  // Random settings
+  $('lengthSlider').value = S.length;
+  $('lengthNum').value = S.length;
+  updateSliderFill($('lengthSlider'));
+  document.querySelectorAll('.toggle[data-type]').forEach(t => {
+    t.classList.toggle('on', S[t.dataset.type === 'upper' ? 'upper' : t.dataset.type === 'lower' ? 'lower' : t.dataset.type]);
+  });
+  $('symbolInputRow').style.display = S.symbols ? '' : 'none';
+  $('symbolInput').value = S.customSymbols;
+  $('excludeAmbiguous').checked = S.excludeAmbiguous;
+  $('countInput').value = S.count;
+
+  // Passphrase settings
+  $('wordCountSlider').value = S.wordCount;
+  $('wordCountNum').value = S.wordCount;
+  updateSliderFill($('wordCountSlider'));
+  $('separatorSelect').value = S.separator;
+  $('capitalizeToggle').classList.toggle('on', S.capitalize);
+  $('trailingNumToggle').classList.toggle('on', S.trailingNumber);
+  $('ppCountInput').value = S.count;
+}
+
+function init() {
+  initTheme();
+  loadSettings();
+  syncUI();
+  regenerate();
+  setupEvents();
+  // Register SW
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+}
+
+function setupEvents() {
+  // Theme toggle
+  $('themeToggle').addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('suite_theme', isDark ? 'dark' : 'light');
+  });
+
+  // Mode toggle
+  document.querySelectorAll('.mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      S.mode = btn.dataset.mode;
+      saveSettings();
+      syncUI();
+      regenerate();
+    });
+  });
+
+  // Length slider/input
+  $('lengthSlider').addEventListener('input', e => {
+    S.length = parseInt(e.target.value);
+    $('lengthNum').value = S.length;
+    updateSliderFill(e.target);
+    saveSettings();
+    regenerate();
+  });
+  $('lengthNum').addEventListener('change', e => {
+    S.length = Math.max(4, Math.min(128, parseInt(e.target.value) || 16));
+    e.target.value = S.length;
+    $('lengthSlider').value = S.length;
+    updateSliderFill($('lengthSlider'));
+    saveSettings();
+    regenerate();
+  });
+
+  // Character type toggles
+  document.querySelectorAll('.toggle[data-type]').forEach(t => {
+    t.addEventListener('click', () => {
+      const type = t.dataset.type;
+      const key = type === 'upper' ? 'upper' : type === 'lower' ? 'lower' : type;
+      const newVal = !S[key];
+
+      // Ensure at least one type remains active
+      if (!newVal) {
+        const active = ['upper', 'lower', 'numbers', 'symbols'].filter(k => S[k] && k !== key);
+        if (active.length === 0) {
+          showToast('At least one character type must be enabled');
+          return;
+        }
+      }
+
+      S[key] = newVal;
+      t.classList.toggle('on', newVal);
+      if (type === 'symbols') $('symbolInputRow').style.display = newVal ? '' : 'none';
+      saveSettings();
+      regenerate();
+    });
+  });
+
+  // Custom symbols
+  $('symbolInput').addEventListener('input', e => {
+    S.customSymbols = e.target.value || '!@#$%^&*';
+    saveSettings();
+    regenerate();
+  });
+
+  // Exclude ambiguous
+  $('excludeAmbiguous').addEventListener('change', e => {
+    S.excludeAmbiguous = e.target.checked;
+    saveSettings();
+    regenerate();
+  });
+
+  // Count
+  $('countInput').addEventListener('change', e => {
+    S.count = Math.max(1, Math.min(20, parseInt(e.target.value) || 5));
+    e.target.value = S.count;
+    saveSettings();
+    regenerate();
+  });
+
+  // Passphrase settings
+  $('wordCountSlider').addEventListener('input', e => {
+    S.wordCount = parseInt(e.target.value);
+    $('wordCountNum').value = S.wordCount;
+    updateSliderFill(e.target);
+    saveSettings();
+    regenerate();
+  });
+  $('wordCountNum').addEventListener('change', e => {
+    S.wordCount = Math.max(3, Math.min(10, parseInt(e.target.value) || 4));
+    e.target.value = S.wordCount;
+    $('wordCountSlider').value = S.wordCount;
+    updateSliderFill($('wordCountSlider'));
+    saveSettings();
+    regenerate();
+  });
+  $('separatorSelect').addEventListener('change', e => {
+    S.separator = e.target.value;
+    saveSettings();
+    regenerate();
+  });
+  $('capitalizeToggle').addEventListener('click', () => {
+    S.capitalize = !S.capitalize;
+    $('capitalizeToggle').classList.toggle('on', S.capitalize);
+    saveSettings();
+    regenerate();
+  });
+  $('trailingNumToggle').addEventListener('click', () => {
+    S.trailingNumber = !S.trailingNumber;
+    $('trailingNumToggle').classList.toggle('on', S.trailingNumber);
+    saveSettings();
+    regenerate();
+  });
+  $('ppCountInput').addEventListener('change', e => {
+    S.count = Math.max(1, Math.min(20, parseInt(e.target.value) || 5));
+    e.target.value = S.count;
+    $('countInput').value = S.count;
+    saveSettings();
+    regenerate();
+  });
+
+  // Regenerate
+  $('regenBtn').addEventListener('click', regenerate);
+
+  // Copy All
+  $('copyAllBtn').addEventListener('click', () => {
+    copyText(S.passwords.join('\n'));
+    showToast('All passwords copied!');
+  });
+
+  // History
+  $('historyBtn').addEventListener('click', () => {
+    renderHistory();
+    $('historyDrawer').classList.add('open');
+  });
+  $('closeHistory').addEventListener('click', () => $('historyDrawer').classList.remove('open'));
+  $('historyDrawer').addEventListener('click', e => {
+    if (e.target === $('historyDrawer')) $('historyDrawer').classList.remove('open');
+  });
+  $('clearHistoryBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('pw_history');
+    renderHistory();
+    showToast('History cleared');
+  });
+
+  // Bulk modal
+  $('bulkBtn').addEventListener('click', () => $('bulkModal').classList.add('open'));
+  $('closeBulk').addEventListener('click', () => $('bulkModal').classList.remove('open'));
+  $('bulkModal').addEventListener('click', e => {
+    if (e.target === $('bulkModal')) $('bulkModal').classList.remove('open');
+  });
+  $('bulkGenerate').addEventListener('click', () => {
+    const count = parseInt(document.querySelector('input[name="bulkCount"]:checked').value);
+    const pws = generatePasswords(count);
+    const blob = new Blob([pws.join('\n')], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'passwords.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+    $('bulkModal').classList.remove('open');
+    showToast('Passwords downloaded');
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', e => {
+    const tag = document.activeElement?.tagName;
+    const isInput = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
+
+    // Space to regenerate (when not in input)
+    if (e.key === ' ' && !isInput) {
+      e.preventDefault();
+      regenerate();
+    }
+
+    // Ctrl/Cmd + M: toggle mode
+    if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+      e.preventDefault();
+      S.mode = S.mode === 'random' ? 'passphrase' : 'random';
+      saveSettings();
+      syncUI();
+      regenerate();
+    }
+
+    // Ctrl/Cmd + H: history (override only if not browser shortcut conflict)
+    // Note: Ctrl+H is browser history in some browsers, so we use it carefully
+    if ((e.ctrlKey || e.metaKey) && e.key === 'h') {
+      // This may conflict with browser history shortcut; skip on some platforms
+    }
+
+    // Ctrl/Cmd + C: copy first password when no text selected in input
+    if ((e.ctrlKey || e.metaKey) && e.key === 'c' && !isInput) {
+      const sel = window.getSelection().toString();
+      if (!sel && S.passwords.length) {
+        e.preventDefault();
+        copyText(S.passwords[0]);
+        showToast('Copied!');
+      }
+    }
+  });
+}
+
+// Start
+init();
+</script>
+</body>
+</html>
