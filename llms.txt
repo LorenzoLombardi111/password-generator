@@ -25,3 +25,8 @@ freepasswordgenerator.app is a free, browser-based password generator that creat
 
 ## Pages
 - https://freepasswordgenerator.app/ — Main password generator tool
+- https://freepasswordgenerator.app/vs-lastpass.html — Comparison: freepasswordgenerator.app vs LastPass
+- https://freepasswordgenerator.app/vs-1password.html — Comparison: freepasswordgenerator.app vs 1Password
+- https://freepasswordgenerator.app/vs-bitwarden.html — Comparison: freepasswordgenerator.app vs Bitwarden
+- https://freepasswordgenerator.app/strong-password-for-accounts.html — Guide to generating strong passwords for online accounts
+- https://freepasswordgenerator.app/passphrase-generator.html — Free passphrase generator with memorable secure passwords

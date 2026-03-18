@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Passphrase Generator — Memorable Secure Passwords | freepasswordgenerator.app</title>
+<meta name="description" content="Free passphrase generator — create memorable, secure passwords online. No login required. freepasswordgenerator.app">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://freepasswordgenerator.app/passphrase-generator.html">
+<meta property="og:title" content="Free Passphrase Generator — Memorable Secure Passwords">
+<meta property="og:description" content="Generate memorable, secure passphrases online. No login, no tracking.">
+<meta property="og:image" content="https://freepasswordgenerator.app/og-image.svg">
+<meta property="og:url" content="https://freepasswordgenerator.app/passphrase-generator.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Passphrase Generator — Memorable Secure Passwords">
+<meta name="twitter:description" content="Generate memorable, secure passphrases online. No login, no tracking.">
+<meta name="twitter:image" content="https://freepasswordgenerator.app/og-image.svg">
+<meta name="theme-color" content="#faf9f6">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<script>
+const saved=localStorage.getItem('suite_theme');
+if(saved==='dark')document.documentElement.classList.add('dark');
+else if(!saved&&window.matchMedia('(prefers-color-scheme:dark)').matches)document.documentElement.classList.add('dark');
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f6;--surface:#f4f2ee;--border:#e8e4dd;--text-primary:#1a1917;--text-secondary:#6b6760;--text-muted:#9e9b96;--accent:#C49A2A;--accent-hover:#A8831F;--accent-text:#ffffff;--shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 8px rgba(0,0,0,0.04)}
+html.dark{--bg:#141412;--surface:#1e1c1a;--border:#2e2b27;--text-primary:#f0ede8;--text-secondary:#9e9b96;--text-muted:#6b6760;--accent:#D4A835;--accent-hover:#C49A2A;--accent-text:#ffffff;--shadow:0 1px 3px rgba(0,0,0,0.3),0 2px 8px rgba(0,0,0,0.2)}
+html{font-size:15px;line-height:1.6;background:var(--bg);color:var(--text-primary);transition:background 0.15s ease,color 0.15s ease}
+body{font-family:"Lora",serif;background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
+
+/* Header */
+.header{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0;position:relative;z-index:20}
+.brand{font-family:"DM Sans",sans-serif;font-size:15px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:8px}
+
+/* Theme toggle */
+.theme-toggle{width:40px;height:24px;border-radius:12px;border:none;background:var(--border);cursor:pointer;position:relative;transition:background 0.15s ease;flex-shrink:0}
+html.dark .theme-toggle{background:var(--accent)}
+.theme-toggle::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:var(--bg);top:3px;left:3px;transition:transform 0.15s ease}
+html.dark .theme-toggle::after{transform:translateX(16px);background:var(--accent-text)}
+
+/* Buttons */
+.btn{font-family:"DM Sans",sans-serif;font-size:13px;font-weight:500;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all 0.15s ease;border:none;outline:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--accent-text)}.btn-primary:hover{background:var(--accent-hover)}
+.btn-secondary{background:transparent;border:1px solid var(--border);color:var(--text-secondary)}.btn-secondary:hover{background:var(--surface)}
+
+/* Breadcrumb */
+.breadcrumb{font-family:"DM Sans",sans-serif;font-size:13px;color:var(--text-muted);padding:16px 0 0}
+.breadcrumb a{color:var(--accent);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{margin:0 6px}
+
+/* Content */
+.content-wrap{max-width:760px;margin:0 auto;padding:48px 24px}
+.date-line{font-family:"DM Sans",sans-serif;font-size:12px;color:var(--text-muted);margin-bottom:32px}
+
+h1{font-family:"Lora",serif;font-size:2rem;font-weight:600;line-height:1.3;color:var(--text-primary);margin-bottom:24px}
+h2{font-family:"Lora",serif;font-size:1.4rem;font-weight:600;line-height:1.35;color:var(--text-primary);margin-top:36px;margin-bottom:12px}
+p{color:var(--text-secondary);margin-bottom:16px;line-height:1.7}
+ul,ol{color:var(--text-secondary);margin-bottom:16px;padding-left:24px;line-height:1.7}
+li{margin-bottom:6px}
+code{font-family:monospace;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:0.9em;color:var(--text-primary)}
+strong{color:var(--text-primary);font-weight:600}
+
+/* FAQ */
+.faq-section{margin-top:40px}
+.faq-section details{border:1px solid var(--border);border-radius:8px;margin-bottom:8px;background:var(--surface);overflow:hidden}
+.faq-section summary{font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;color:var(--text-primary);padding:14px 18px;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.faq-section summary::-webkit-details-marker{display:none}
+.faq-section summary::after{content:"+";font-size:18px;color:var(--text-muted);flex-shrink:0;transition:transform 0.15s ease}
+.faq-section details[open] summary::after{content:"\2212"}
+.faq-section .faq-body{padding:0 18px 14px;font-size:14px;color:var(--text-secondary);line-height:1.7}
+
+/* CTA */
+.cta-box{text-align:center;margin:40px 0;padding:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.cta-box p{font-family:"DM Sans",sans-serif;font-size:15px;color:var(--text-secondary);margin-bottom:16px}
+.cta-box .btn-primary{font-size:15px;padding:12px 28px;border-radius:10px}
+
+/* Related */
+.related-section{margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
+.related-section h2{font-size:1.1rem;margin-top:0}
+.related-links{display:flex;flex-wrap:wrap;gap:8px}
+.related-links a{font-family:"DM Sans",sans-serif;font-size:13px;color:var(--accent);text-decoration:none;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 12px;transition:all 0.15s ease}
+.related-links a:hover{background:var(--border)}
+
+/* Suite badge */
+.suite-badge{position:fixed;bottom:16px;right:16px;font-family:"DM Sans",sans-serif;font-size:11px;font-weight:400;color:var(--text-muted);z-index:10;padding:4px 8px}
+
+/* Responsive */
+@media(max-width:768px){
+.header{padding:0 16px}
+.content-wrap{padding:32px 16px}
+h1{font-size:1.6rem}
+h2{font-size:1.2rem}
+.suite-badge .full{display:none}.suite-badge .short{display:inline}
+}
+@media(min-width:769px){
+.suite-badge .short{display:none}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Free Passphrase Generator — Memorable Secure Passwords",
+      "description": "Learn how passphrases work, when to use them, and generate memorable secure passwords with freepasswordgenerator.app.",
+      "datePublished": "2026-03-18",
+      "dateModified": "2026-03-18",
+      "author": {
+        "@type": "Organization",
+        "name": "freepasswordgenerator.app",
+        "url": "https://freepasswordgenerator.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "freepasswordgenerator.app",
+        "url": "https://freepasswordgenerator.app/"
+      },
+      "mainEntityOfPage": "https://freepasswordgenerator.app/passphrase-generator.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a passphrase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A passphrase is a sequence of randomly chosen words used as a password. Instead of a single complex string like 'x9#Kp!2m', a passphrase looks like 'correct horse battery staple'. Passphrases are typically easier to remember while providing strong security through length and randomness."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are passphrases more secure than passwords?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A well-generated passphrase can be more secure than a typical password because its length makes brute-force attacks impractical. A 6-word passphrase from a 2048-word list provides approximately 66 bits of entropy, which is very strong. However, the passphrase must be generated randomly — not chosen from a favorite quote or song lyrics."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many words should a passphrase have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For most purposes, 4 to 6 words is recommended. Four words provide around 44 bits of entropy, suitable for moderate-security needs. Six words provide roughly 66 bits of entropy, which is strong enough for master passwords and high-security accounts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does freepasswordgenerator.app use the EFF word list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "freepasswordgenerator.app uses a curated 2048-word dictionary optimized for memorability. The words are common English words that are easy to visualize and spell, similar in philosophy to the EFF word list but tuned for the best balance of usability and entropy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I customize passphrase separators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. freepasswordgenerator.app lets you choose any separator character — hyphens, periods, underscores, spaces, numbers, or even no separator at all. You can also enable optional capitalization and number insertion for sites that require mixed character types."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "freepasswordgenerator.app",
+      "url": "https://freepasswordgenerator.app/",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online passphrase and password generator. Create memorable, secure passwords in your browser with no login required."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://freepasswordgenerator.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Passphrase Generator",
+          "item": "https://freepasswordgenerator.app/passphrase-generator.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <a href="/" class="brand">freepasswordgenerator.app</a>
+  <div class="header-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+  </div>
+</header>
+
+<div class="content-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span>&rsaquo;</span>Passphrase Generator
+  </nav>
+
+  <p class="date-line">Last updated: March 18, 2026</p>
+
+  <article>
+
+    <h1>Free Passphrase Generator &mdash; Memorable Secure Passwords</h1>
+
+    <p>Most people struggle with passwords. They either pick something easy to guess or create a random mess they forget within hours. Passphrases solve both problems at once. A passphrase is a string of randomly selected words &mdash; easy for a human to remember, brutally hard for a computer to crack. <strong>freepasswordgenerator.app</strong> lets you generate secure passphrases instantly, right in your browser, with no login and no tracking.</p>
+
+    <h2>What Is a Passphrase and Why Does It Work?</h2>
+
+    <p>A passphrase is a password built from multiple ordinary words chosen at random. Instead of something like <code>x9#Kp!2m</code>, you get a phrase such as <code>correct-horse-battery-staple</code>. The security of a passphrase comes from the number of possible word combinations, not from character complexity.</p>
+
+    <p>When you pick words randomly from a fixed dictionary, each word multiplies the total number of possibilities. A 2048-word dictionary gives you 2048 options per word. The math is straightforward:</p>
+
+    <ul>
+      <li><strong>4 words:</strong> 2048<sup>4</sup> = approximately 17.6 trillion combinations, or about <strong>44 bits of entropy</strong>.</li>
+      <li><strong>5 words:</strong> 2048<sup>5</sup> = roughly 36 quadrillion combinations, or about <strong>55 bits of entropy</strong>.</li>
+      <li><strong>6 words:</strong> 2048<sup>6</sup> = over 73 quintillion combinations, or about <strong>66 bits of entropy</strong>.</li>
+    </ul>
+
+    <p>That entropy comes purely from word count and dictionary size. You don't need to swap letters for symbols or memorize arcane substitution rules. Randomness does the work.</p>
+
+    <h2>What Is the XKCD "Correct Horse Battery Staple" Concept?</h2>
+
+    <p>The idea of using word-based passwords gained widespread attention through <strong>XKCD comic #936</strong>. The comic showed that a four-word passphrase like "correct horse battery staple" is both far easier to remember and harder to crack than a short, complex password like <code>Tr0ub4dor&3</code>. The key insight is that length and randomness matter more than complexity. A brute-force attacker has to try every possible combination, and with thousands of words per position, the search space grows exponentially.</p>
+
+    <p>This concept has been endorsed by security researchers and organizations, including the Electronic Frontier Foundation (EFF), which published its own word lists specifically designed for generating passphrases with dice.</p>
+
+    <h2>When Should You Use a Passphrase vs. a Random Password?</h2>
+
+    <p>Passphrases and random character passwords each have their place. Here's when each shines:</p>
+
+    <ul>
+      <li><strong>Use a passphrase</strong> when you need to type or remember the password &mdash; master passwords for password managers, Wi-Fi network passwords, device unlock codes, or any login you enter manually on a regular basis.</li>
+      <li><strong>Use a random character password</strong> when a password manager fills it in automatically. For site-specific passwords you never type, maximum entropy per character is more efficient.</li>
+    </ul>
+
+    <p>In practice, most people benefit from one strong passphrase they memorize (for their password manager) and random generated passwords for everything else. <strong>freepasswordgenerator.app</strong> supports both modes, so you can switch between passphrase generation and random password generation in a single tool.</p>
+
+    <h2>How Does freepasswordgenerator.app's Passphrase Mode Work?</h2>
+
+    <p>The passphrase generator on <strong>freepasswordgenerator.app</strong> draws words from a curated <strong>2048-word dictionary</strong> optimized for memorability. Every word is a common English word that's easy to visualize, spell, and type. Generation happens entirely in your browser using the Web Crypto API &mdash; no words are sent to any server.</p>
+
+    <p>You can customize several aspects of your passphrase:</p>
+
+    <ul>
+      <li><strong>Word count:</strong> Choose anywhere from 3 to 10 words depending on your security needs.</li>
+      <li><strong>Separator character:</strong> Pick hyphens, periods, underscores, spaces, numbers, or no separator at all.</li>
+      <li><strong>Optional capitalization:</strong> Capitalize the first letter of each word for sites that require uppercase characters.</li>
+      <li><strong>Optional number insertion:</strong> Append or insert a random digit to satisfy password policies that demand numbers.</li>
+    </ul>
+
+    <p>These options let you meet virtually any password policy while keeping the core passphrase easy to remember. The entropy calculation updates in real time so you always know exactly how strong your passphrase is.</p>
+
+    <h2>When Are Passphrases Ideal in Practice?</h2>
+
+    <p>There are several scenarios where passphrases are clearly the best choice:</p>
+
+    <ul>
+      <li><strong>Master passwords:</strong> The single password that unlocks your password manager must be memorized. A 5- or 6-word passphrase provides excellent security while remaining easy to recall.</li>
+      <li><strong>Wi-Fi passwords:</strong> You'll likely need to type this on phones, laptops, and guest devices. A passphrase like <code>maple-thunder-bicycle-frost</code> is far easier to share and enter than <code>j8$Qm!vL2#</code>.</li>
+      <li><strong>Memorable logins:</strong> Any account where you regularly type your password manually &mdash; your computer login, email on mobile, or a work system &mdash; benefits from a passphrase.</li>
+      <li><strong>Shared credentials:</strong> When you need to tell someone a password over the phone or read it aloud, words are far less error-prone than random characters.</li>
+    </ul>
+
+    <p>For all of these cases, <strong>freepasswordgenerator.app</strong> generates passphrases that balance memorability with real cryptographic strength. No guesswork, no weak patterns &mdash; just randomly chosen words with measurable entropy.</p>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+
+      <details>
+        <summary>What is a passphrase?</summary>
+        <div class="faq-body">
+          <p>A passphrase is a sequence of randomly chosen words used as a password. Instead of a single complex string like "x9#Kp!2m", a passphrase looks like "correct horse battery staple". Passphrases are typically easier to remember while providing strong security through length and randomness.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Are passphrases more secure than passwords?</summary>
+        <div class="faq-body">
+          <p>A well-generated passphrase can be more secure than a typical password because its length makes brute-force attacks impractical. A 6-word passphrase from a 2048-word list provides approximately 66 bits of entropy, which is very strong. However, the passphrase must be generated randomly &mdash; not chosen from a favorite quote or song lyrics.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How many words should a passphrase have?</summary>
+        <div class="faq-body">
+          <p>For most purposes, 4 to 6 words is recommended. Four words provide around 44 bits of entropy, suitable for moderate-security needs. Six words provide roughly 66 bits of entropy, which is strong enough for master passwords and high-security accounts.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Does freepasswordgenerator.app use the EFF word list?</summary>
+        <div class="faq-body">
+          <p>freepasswordgenerator.app uses a curated 2048-word dictionary optimized for memorability. The words are common English words that are easy to visualize and spell, similar in philosophy to the EFF word list but tuned for the best balance of usability and entropy.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I customize passphrase separators?</summary>
+        <div class="faq-body">
+          <p>Yes. freepasswordgenerator.app lets you choose any separator character &mdash; hyphens, periods, underscores, spaces, numbers, or even no separator at all. You can also enable optional capitalization and number insertion for sites that require mixed character types.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <p>Ready to create a passphrase you'll actually remember?</p>
+      <a href="https://freepasswordgenerator.app/" class="btn btn-primary">Generate Secure Passphrases Free</a>
+    </div>
+
+    <!-- Related -->
+    <section class="related-section">
+      <h2>Related Pages</h2>
+      <div class="related-links">
+        <a href="/vs-lastpass.html">vs LastPass</a>
+        <a href="/vs-1password.html">vs 1Password</a>
+        <a href="/vs-bitwarden.html">vs Bitwarden</a>
+        <a href="/strong-password-for-accounts.html">Strong Passwords for Accounts</a>
+        <a href="/">Home</a>
+      </div>
+    </section>
+
+  </article>
+</div>
+
+<!-- Suite badge -->
+<div class="suite-badge">
+  <span class="full">by freesuite.app</span>
+  <span class="short">freesuite.app</span>
+</div>
+
+<script>
+document.getElementById('themeToggle').addEventListener('click',()=>{const d=document.documentElement.classList.toggle('dark');localStorage.setItem('suite_theme',d?'dark':'light')});
+</script>
+
+</body>
+</html>
