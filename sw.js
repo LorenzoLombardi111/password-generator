@@ -1,5 +1,5 @@
 const CACHE_NAME = 'passgen-v1';
-const ASSETS = ['/', '/index.html', '/manifest.json', '/og-image.svg'];
+const ASSETS = ['/', '/index.html', '/manifest.json', '/og-image.svg', '/favicon.svg'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));
